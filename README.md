@@ -1,31 +1,31 @@
 ##### Golang Migrate Documentation ######
 
-# Introduction
-    golang-migrate is a CLI tool and library for running database migrations. It supports various databases and allows you to manage schema changes in a controlled and versioned manner.
+### Introduction
+golang-migrate is a CLI tool and library for running database migrations. It supports various databases and allows you to manage schema changes in a controlled and versioned manner.
 
-# Common Functions for golang-migrate
+### Common Functions for golang-migrate
 Here are some common functions you can use with golang-migrate:
 
-# Create a new migration:
+#### Create a new migration:
     migrate create -ext sql -dir database/migrations -seq <migration_name>
-# Apply migrations:
+#### Apply migrations:
     migrate -database ${DATABASE_URL} -path database/migrations up
-# Revert migrations:
+#### Revert migrations:
     migrate -database ${DATABASE_URL} -path database/migrations down
-# Drop all tables:
+#### Drop all tables:
     migrate -database ${DATABASE_URL} -path database/migrations drop
 
 
-# Installation
+### Installation
 To install golang-migrate, you can use Scoop:
 1. scoop install migrate
 
-# If you don’t have Scoop installed, open PowerShell and run:
+### If you don’t have Scoop installed, open PowerShell and run:
 1. Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 2. Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 
 
-# Creating Migrations 
+### Creating Migrations 
 Create a directory for migrations
     mkdir database\migrations
 
