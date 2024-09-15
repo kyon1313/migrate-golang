@@ -29,8 +29,8 @@ To install golang-migrate, you can use Scoop:
 Create a directory for migrations
     mkdir database\migrations
 
-# Using Makefile and Environment Variables
-    Create a .env file for your environment variables:
+### Using Makefile and Environment Variables
+Create a .env file for your environment variables:
 #### Note on DATABASE_URL
     When running it in Go, the DATABASE_URL should look like this:
         - DATABASE_URL = sqlserver://$SA_USERNAME:$SA_PASSWORD@$DATABASE_HOST:$DATABASE_PORT?database=$DATABASE_NAME
@@ -39,52 +39,47 @@ Create a directory for migrations
         - DATABASE_URL = sqlserver://$(SA_USERNAME):$(SA_PASSWORD)@$(DATABASE_HOST):$(DATABASE_PORT)?database=$(DATABASE_NAME)
 
 
-#### Create a Makefile to Manage Migration Commands
-# Load environment variables from .env file
-ifeq (,$(wildcard ./.env))
-    include .env
-    export
-endif
+### Create a Makefile to Manage Migration Commands
 
-migrate-create:
+#### migrate-create:
     migrate create -ext sql -dir database/migrations -seq $(name)
 
-migrate-up:
+#### migrate-up:
     migrate -database ${DATABASE_URL} -path database/migrations up
 
-migrate-down: 
+#### migrate-down: 
     migrate -database ${DATABASE_URL} -path database/migrations down
 
-migrate-version:
+#### migrate-version:
     migrate -database ${DATABASE_URL} -path database/migrations version
 
 
 
-# Running Migrations Using the Makefile
-Create a new migration:
+## Running Migrations Using the Makefile
+#### Create a new migration:
     make migrate-create name=create_users_table
 
-Apply migrations:
+#### Apply migrations:
     make migrate-up
 
-Revert migrations:
+#### Revert migrations:
     make migrate-down
 
-Check migration status:
+#### Check migration status:
     make migrate-version
 
-#### Go implementation will be demo with code , but heres how we can use it:
-# Run migrations using Go
-Create a new migration:
+## Go implementation will be demo with code , but heres how we can use it:
+### Run migrations using Go
+#### Create a new migration:
     go run main.go migrate-create <migration_name>
 
-Apply migrations:
+#### Apply migrations:
     go run main.go migrate-up
 
-Revert migrations:
+#### Revert migrations:
     go run main.go migrate-down
 
-Check migration status:
+#### Check migration status:
     go run main.go migrate-version
 
 For more detailed information, you can refer to the official:
@@ -92,22 +87,22 @@ For more detailed information, you can refer to the official:
 
 
 
-##### Running MSSQL Using Docker Compose ##### 
-# Build and run the Docker container:
+### Running MSSQL Using Docker Compose ##### 
+#### Build and run the Docker container:
     docker compose up --build
-# Access the MSSQL container:
+#### Access the MSSQL container:
     docker exec -it sql2 /bin/bash
-# Connect to MSSQL using sqlcmd:
+#### Connect to MSSQL using sqlcmd:
     /opt/mssql-tools18/bin/sqlcmd -S tcp:localhost,1433 -U sa -P NewStrong@Passw0rd -C
 
-#### SQL COMMANDS FOR TESTING #####
-# Create a database:
+### SQL COMMANDS FOR TESTING #####
+#### Create a database:
     CREATE DATABASE sample;
     GO
-# List available databases:
+#### List available databases:
     SELECT name FROM sys.databases;
     GO
-# Use the database:
+#### Use the database:
     USE sample;
     GO
 
