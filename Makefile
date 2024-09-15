@@ -4,22 +4,20 @@ endif
 
 include .env
 
-
 create:
-	migrate create -ext sql -dir database/migrations -seq $(NAME) 
+	go run main.go create $(NAME)
 
 up:
-	migrate -database $(DATABASE_URL) -path database/migrations up 1
+	go run main.go up
 
 down:
-	migrate -database $(DATABASE_URL) -path database/migrations down 1
+	go run main.go down
 
 force:
-	migrate -database $(DATABASE_URL) -path database/migrations force $(VERSION)
+	go run main.go force $(VERSION)
 
 drop:
-	migrate -database $(DATABASE_URL) -path database/migrations drop
+	go run main.go drop
 
 version:
-	migrate -database $(DATABASE_URL) -path database/migrations version
-
+	go run main.go version

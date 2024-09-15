@@ -51,13 +51,13 @@ Create a .env file for your environment variables:
 
 ## Running Migrations Using the Makefile
 #### Create a new migration:
-    make migrate-create name=create_users_table
+    make create NAME=create_users_table
 #### Apply migrations:
-    make migrate-up
+    make up
 #### Revert migrations:
-    make migrate-down
+    make down
 #### Check migration status:
-    make migrate-version
+    make version
 
 
 ## Go implementation will be demo with code , but heres how we can use it:
@@ -70,6 +70,8 @@ Create a .env file for your environment variables:
     go run main.go migrate-down
 #### Check migration status:
     go run main.go migrate-version
+
+
 For more detailed information, you can refer to the official:
 - [golang-migrate documentation](https://github.com/golang-migrate/migrate)
 
