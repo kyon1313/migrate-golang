@@ -18,11 +18,11 @@ Here are some common functions you can use with golang-migrate:
 
 ### Installation
 To install golang-migrate, you can use Scoop:
-1. scoop install migrate
+    scoop install migrate
 
 ### If you don’t have Scoop installed, open PowerShell and run:
-1. Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-2. Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+    Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+    Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 
 
 ### Creating Migrations 
@@ -31,12 +31,12 @@ Create a directory for migrations
 
 ### Using Makefile and Environment Variables
 Create a .env file for your environment variables:
-#### Note on DATABASE_URL
-    When running it in Go, the DATABASE_URL should look like this:
-        - DATABASE_URL = sqlserver://$SA_USERNAME:$SA_PASSWORD@$DATABASE_HOST:$DATABASE_PORT?database=$DATABASE_NAME
 
-    When running it in the Makefile, the DATABASE_URL should look like this:
-        - DATABASE_URL = sqlserver://$(SA_USERNAME):$(SA_PASSWORD)@$(DATABASE_HOST):$(DATABASE_PORT)?database=$(DATABASE_NAME)
+### Note on DATABASE_URL
+#### When running it in Go, the DATABASE_URL should look like this:
+    DATABASE_URL = sqlserver://$SA_USERNAME:$SA_PASSWORD@$DATABASE_HOST:$DATABASE_PORT?database=$DATABASE_NAME
+#### When running it in the Makefile, the DATABASE_URL should look like this:
+     DATABASE_URL = sqlserver://$(SA_USERNAME):$(SA_PASSWORD)@$(DATABASE_HOST):$(DATABASE_PORT)?database=$(DATABASE_NAME)
 
 
 ### Create a Makefile to Manage Migration Commands
